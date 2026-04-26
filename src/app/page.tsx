@@ -10,6 +10,7 @@ import MonitorSection from '@/components/MonitorSection'
 import QuotesSection from '@/components/QuotesSection'
 import CTA from '@/components/CTA'
 import Footer from '@/components/Footer'
+import { Reveal } from '@/components/Reveal'
 
 export default function Home() {
   return (
@@ -19,12 +20,25 @@ export default function Home() {
         <Hero />
         <Logos />
         <Benefits />
+
+        <div className="separator-fade mx-auto max-w-7xl" />
         <IntakeSection />
+
+        <div className="separator-fade mx-auto max-w-7xl" />
         <PlanSection />
+
+        <div className="separator-fade mx-auto max-w-7xl" />
         <BuildSection />
+
+        <div className="separator-fade mx-auto max-w-7xl" />
         <ReviewSection />
+
+        <div className="separator-fade mx-auto max-w-7xl" />
         <MonitorSection />
+
+        <div className="separator-fade mx-auto max-w-7xl" />
         <QuotesSection />
+
         <CTA />
       </main>
       <Footer />

@@ -1,10 +1,12 @@
+import { Reveal, StaggerItem } from './Reveal'
+
 const benefits = [
   {
     label: 'Built for purpose',
     desc: 'Linear is shaped by the practices and principles of world-class product teams.',
     fig: 'FIG 0.2',
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 265 262" fill="none" className="w-full h-auto">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 265 262" fill="none" className="w-full h-auto animate-float">
         <path stroke="#3E3E44" strokeLinecap="round" strokeWidth="0.5" d="m19.107 186.583 108.543 54.272a10.29 10.29 0 0 0 9.2 0l108.543-54.272" />
         <path stroke="#3E3E44" strokeLinecap="round" strokeWidth="0.5" d="m19.107 168.583 108.543 54.272a10.29 10.29 0 0 0 9.2 0l108.543-54.272" />
         <path stroke="#3E3E44" strokeLinecap="round" strokeWidth="0.5" d="m19.107 150.583 108.543 54.272a10.29 10.29 0 0 0 9.2 0l108.543-54.272" />
@@ -18,7 +20,7 @@ const benefits = [
     desc: 'Designed for workflows shared by humans and agents. From drafting PRDs to pushing PRs.',
     fig: 'FIG 0.3',
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 304 281" fill="none" className="w-full h-auto">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 304 281" fill="none" className="w-full h-auto animate-float" style={{ animationDelay: '1s' }}>
         <path fill="#08090A" stroke="#D0D6E0" strokeWidth="0.5" d="M148.534 1.068a7.75 7.75 0 0 1 6.932 0l50.211 25.106a3.75 3.75 0 0 1 2.073 3.354v125.056c0 1.42-.803 2.718-2.073 3.354l-50.211 25.105a7.75 7.75 0 0 1-6.932 0l-50.21-25.105a3.75 3.75 0 0 1-2.074-3.354V29.528a3.75 3.75 0 0 1 2.073-3.354z" />
         <path stroke="#2E2E32" strokeLinecap="round" strokeWidth="0.5" d="m102 30.056 46.422 23.21a8 8 0 0 0 7.156 0L202 30.057" />
         <path fill="#08090A" stroke="#3E3E44" strokeWidth="0.5" d="M84.534 139.068a7.76 7.76 0 0 1 6.932 0l50.211 25.106a3.75 3.75 0 0 1 2.073 3.353v19.057c0 1.42-.803 2.718-2.073 3.354l-50.211 25.105a7.75 7.75 0 0 1-6.932 0l-50.21-25.105a3.75 3.75 0 0 1-2.074-3.354v-19.057a3.75 3.75 0 0 1 2.073-3.353z" />
@@ -35,7 +37,7 @@ const benefits = [
     desc: 'Reduces noise and restores momentum to help teams ship with high velocity and focus.',
     fig: 'FIG 0.4',
     icon: (
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272 267" fill="none" className="w-full h-auto">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 272 267" fill="none" className="w-full h-auto animate-float" style={{ animationDelay: '2s' }}>
         <g>
           <path fill="#08090A" stroke="#62666D" strokeWidth="0.5" d="M137.044 107.668a1.44 1.44 0 0 1 1.288 0l115.686 57.843a3.13 3.13 0 0 1 1.73 2.8v20.529a1.44 1.44 0 0 1-.796 1.288l-1.69.845a1.44 1.44 0 0 1-1.288 0l-115.686-57.843a3.13 3.13 0 0 1-1.73-2.8v-20.529c0-.545.308-1.044.796-1.288z" />
           <path stroke="#2E2E32" strokeLinecap="round" strokeWidth="0.5" d="M137.689 110.446l113.061 56.531a3.38 3.38 0 0 1 1.868 3.023v18.193" />
@@ -61,23 +63,27 @@ export default function Benefits() {
   return (
     <section className="py-16 md:py-24">
       <div className="mx-auto max-w-7xl px-4 lg:px-8">
-        <h2 className="text-2xl md:text-3xl font-semibold max-w-3xl leading-relaxed">
-          <strong>A new species of product tool.</strong>{' '}
-          Purpose-built for modern teams with AI workflows at its core, Linear sets a new standard for planning and building products.
-        </h2>
+        <Reveal>
+          <h2 className="text-2xl md:text-3xl font-semibold max-w-3xl leading-relaxed">
+            <strong>A new species of product tool.</strong>{' '}
+            Purpose-built for modern teams with AI workflows at its core, Linear sets a new standard for planning and building products.
+          </h2>
+        </Reveal>
 
         <div className="mt-16 grid gap-12 md:grid-cols-3">
-          {benefits.map((b) => (
-            <div key={b.label} className="flex flex-col gap-6">
-              <span className="text-xs text-l-text-quaternary opacity-40">{b.fig}</span>
-              <div className="aspect-[4/3] flex items-center justify-center">
-                {b.icon}
+          {benefits.map((b, i) => (
+            <StaggerItem key={b.label} index={i}>
+              <div className="flex flex-col gap-6">
+                <span className="text-xs text-l-text-quaternary opacity-40">{b.fig}</span>
+                <div className="aspect-[4/3] flex items-center justify-center">
+                  {b.icon}
+                </div>
+                <div>
+                  <h3 className="text-lg font-medium mb-2">{b.label}</h3>
+                  <p className="text-sm text-l-text-secondary leading-relaxed">{b.desc}</p>
+                </div>
               </div>
-              <div>
-                <h3 className="text-lg font-medium mb-2">{b.label}</h3>
-                <p className="text-sm text-l-text-secondary leading-relaxed">{b.desc}</p>
-              </div>
-            </div>
+            </StaggerItem>
           ))}
         </div>
       </div>

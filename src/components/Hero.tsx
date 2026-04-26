@@ -1,36 +1,63 @@
+'use client'
+
 export default function Hero() {
   return (
-    <section className="relative pt-32 pb-16 md:pt-40 md:pb-24">
-      <div className="mx-auto max-w-7xl px-4 lg:px-8">
+    <section className="relative pt-32 pb-16 md:pt-40 md:pb-24 overflow-hidden">
+      {/* Background glow */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[600px] pointer-events-none animate-glow-pulse">
+        <div className="w-full h-full rounded-full" style={{
+          background: 'radial-gradient(ellipse at center, rgba(94, 106, 210, 0.06) 0%, transparent 70%)',
+        }} />
+      </div>
+
+      <div className="mx-auto max-w-7xl px-4 lg:px-8 relative">
         {/* Title */}
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-semibold tracking-tight leading-[1.08] max-w-4xl">
-          <span className="block">The product development</span>
-          <span className="block">system for teams <span className="text-l-text-tertiary">and agents</span></span>
+          <span className="block" style={{
+            animation: 'fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both',
+          }}>
+            The product development
+          </span>
+          <span className="block" style={{
+            animation: 'fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.1s both',
+          }}>
+            system for teams{' '}
+            <span className="text-l-text-tertiary" style={{
+              animation: 'fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s both',
+            }}>and agents</span>
+          </span>
         </h1>
 
         {/* Subtitle */}
         <div className="mt-6 flex flex-col gap-6 md:flex-row md:items-end md:justify-between">
-          <p className="text-lg text-l-text-secondary max-w-lg">
+          <p className="text-lg text-l-text-secondary max-w-lg" style={{
+            animation: 'fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.3s both',
+          }}>
             Purpose-built for planning and building products. Designed for the AI era.
           </p>
           <a
             href="/next"
             className="group flex items-center gap-3 text-sm"
+            style={{
+              animation: 'fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s both',
+            }}
           >
             <span className="relative flex h-2 w-2">
-              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-l-green opacity-75" />
+              <span className="absolute inline-flex h-full w-full rounded-full bg-l-green opacity-75 animate-ping" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-l-green" />
             </span>
-            <span className="text-l-text-secondary group-hover:text-l-text transition-colors">
+            <span className="text-l-text-secondary group-hover:text-l-text transition-colors nav-link">
               Issue tracking is dead
             </span>
-            <span className="text-l-text-tertiary">linear.app/next →</span>
+            <span className="text-l-text-tertiary group-hover:text-l-text-secondary transition-colors">linear.app/next →</span>
           </a>
         </div>
 
         {/* Hero Image */}
-        <div className="mt-12 md:mt-16">
-          <div className="card-panel overflow-hidden">
+        <div className="mt-12 md:mt-16" style={{
+          animation: 'fadeSlideUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s both',
+        }}>
+          <div className="card-panel overflow-hidden hover-lift">
             <div className="grain absolute inset-0" />
             <div className="glow absolute inset-0" />
             <div className="relative aspect-[16/10] w-full bg-l-bg-tertiary flex items-center justify-center">
@@ -44,10 +71,11 @@ export default function Hero() {
                     </svg>
                     <span className="text-sm font-medium text-l-text">Linear</span>
                   </div>
-                  {/* Nav items */}
                   <div className="space-y-1">
-                    {['Inbox', 'My issues', 'Reviews', 'Pulse'].map((item) => (
-                      <div key={item} className="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-l-text-secondary hover:bg-l-bg-tertiary">
+                    {['Inbox', 'My issues', 'Reviews', 'Pulse'].map((item, i) => (
+                      <div key={item} className="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-l-text-secondary hover:bg-l-bg-tertiary transition-colors cursor-pointer" style={{
+                        animation: `fadeSlideRight 0.4s ease ${0.6 + i * 0.05}s both`,
+                      }}>
                         <div className="h-3.5 w-3.5 rounded bg-l-text-quaternary/30" />
                         {item}
                       </div>
@@ -55,8 +83,10 @@ export default function Hero() {
                   </div>
                   <div className="mt-4 border-t border-l-border pt-4">
                     <div className="text-[10px] uppercase tracking-wider text-l-text-quaternary mb-2">Workspace</div>
-                    {['Initiatives', 'Projects', 'More'].map((item) => (
-                      <div key={item} className="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-l-text-secondary">
+                    {['Initiatives', 'Projects', 'More'].map((item, i) => (
+                      <div key={item} className="flex items-center gap-2 rounded-md px-2 py-1.5 text-xs text-l-text-secondary" style={{
+                        animation: `fadeSlideRight 0.4s ease ${0.8 + i * 0.05}s both`,
+                      }}>
                         <div className="h-3.5 w-3.5 rounded bg-l-text-quaternary/30" />
                         {item}
                       </div>
@@ -66,13 +96,13 @@ export default function Hero() {
                 {/* Main content */}
                 <div className="flex-1 p-4 md:p-6">
                   <div className="flex items-center gap-2 mb-4">
-                    <span className="text-sm font-medium">Faster app launch</span>
-                    <span className="ml-auto text-xs text-l-text-quaternary">02 / 145</span>
+                    <span className="text-sm font-medium" style={{ animation: 'fadeIn 0.5s ease 0.8s both' }}>Faster app launch</span>
+                    <span className="ml-auto text-xs text-l-text-quaternary" style={{ animation: 'fadeIn 0.5s ease 0.9s both' }}>02 / 145</span>
                   </div>
-                  <p className="text-sm text-l-text-secondary max-w-md mb-6">
+                  <p className="text-sm text-l-text-secondary max-w-md mb-6" style={{ animation: 'fadeIn 0.5s ease 1s both' }}>
                     Render UI before <code className="rounded bg-l-bg-tertiary px-1.5 py-0.5 text-xs font-mono">vehicle_state</code> sync when minimum required state is present, instead of blocking on full refresh during iOS startup.
                   </p>
-                  <div className="space-y-3">
+                  <div className="space-y-3" style={{ animation: 'fadeIn 0.5s ease 1.1s both' }}>
                     <div className="flex items-center gap-2 text-xs text-l-text-secondary">
                       <div className="h-3 w-3 rounded-full bg-l-yellow" />
                       <span>In Progress</span>
@@ -86,6 +116,21 @@ export default function Hero() {
           </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes fadeSlideUp {
+          from { opacity: 0; transform: translateY(30px); filter: blur(4px); }
+          to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+        @keyframes fadeSlideRight {
+          from { opacity: 0; transform: translateX(-10px); }
+          to { opacity: 1; transform: translateX(0); }
+        }
+        @keyframes fadeIn {
+          from { opacity: 0; }
+          to { opacity: 1; }
+        }
+      `}</style>
     </section>
   )
 }
