@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'InterVariable';
+  src: url('/fonts/InterVariable.woff2') format('woff2');
+  font-weight: 100 900;
+  font-display: swap;
+}
+
+:root {
+  --color-bg: #08090a;
+  --color-bg-secondary: #111113;
+  --color-bg-tertiary: #1a1a1f;
+  --color-border: #1e1e22;
+  --color-border-secondary: #2e2e32;
+  --color-text: #e8e8ec;
+  --color-text-secondary: #8b8b93;
+  --color-text-tertiary: #5c5c66;
+  --color-text-quaternary: #3e3e44;
+}
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-text);
+  font-family: 'InterVariable', 'Inter', system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+}
+
+::selection {
+  background: rgba(94, 106, 210, 0.3);
+}
+
+@layer components {
+  .section-title {
+    @apply text-4xl md:text-5xl font-semibold tracking-tight leading-tight;
+  }
+
+  .section-desc {
+    @apply text-lg text-l-text-secondary leading-relaxed max-w-lg;
+  }
+
+  .card-panel {
+    @apply rounded-xl border border-l-border bg-l-bg-secondary relative overflow-hidden;
+  }
+
+  .grain {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    pointer-events: none;
+  }
+
+  .glow {
+    background: radial-gradient(ellipse at 50% 0%, rgba(94, 106, 210, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+}
